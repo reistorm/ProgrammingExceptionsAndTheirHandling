@@ -30,13 +30,14 @@ class Expre {
         } catch (ArithmeticException e) {
             System.out.println("Division by zero");
         }
-        return a;
+        return printSum(a,b);
     }
 
-    public static void printSum(int a, int b) {
+    public static double printSum(int a, int b) {
         // Введите свое решение ниже
         int sum = a + b;
         System.out.println(sum);
+        return sum;
     }
 }
 
@@ -49,7 +50,7 @@ public class Task3 {
 
         if (args.length == 0) {
             a = 90;
-            b = 0; // Default values if no arguments are provided
+            b = 30; // Default values if no arguments are provided
         } else {
             a = Integer.parseInt(args[0]);
             b = Integer.parseInt(args[1]);

@@ -11,34 +11,22 @@ import java.util.Arrays;
 class Expr {
 
     public static double expr(int[] intArray, int d) {
-//        double result1 = 0;
-//        int index = 8;
-//        if (index >= 0 && index < intArray.length + 1 && d != 0) {
-//            try {
-//                result1 = intArray[8] / d;
-//                System.out.println("intArray[8] / d = " + intArray[8] + "/" + d + "=" + result1);
-//            } catch (ArithmeticException e) {
-//                System.out.println("It's not possible to evaluate the expression - intArray[8] / d as d = 0.\n" +
-//                        "NaN");
-//            } catch (ArrayIndexOutOfBoundsException e) {
-//                System.out.println("Array Index Out Of Bounds Exception");
-//            }
-//
-//        }
-//        return intArray[8] / d;
-        int index = 8;
-        if (index < intArray.length + 1) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        return intArray[8] / d;
-    }
 
-    public static int divisionByZero1(int[] intArray, int d) {
-        // Напишите свое решение ниже
-        if (d == 0) {
-            throw new ArithmeticException();
+        for (int i = 0; i < intArray.length; i++) {
+            double result1 = 0;
+            if (i >= 8 && d != 0) {
+                try {
+                    result1 = intArray[8] / d;
+                    System.out.println("intArray[8] / d = " + intArray[8] + " / " + d + " = " + result1);
+                } catch (ArithmeticException e) {
+                    System.out.println("It's not possible to evaluate the expression - intArray[8] / d as d = 0.\n" +
+                            "NaN");
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Array Index Out Of Bounds Exception");
+                }
+            }
         }
-        return intArray[8] / d;
+        return intArray[8] * 1 / d;
     }
 }
 
@@ -55,11 +43,6 @@ public class Task2 {
         } else {
             intArray = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
             d = Integer.parseInt(args[1]); // Можно использовать значение по умолчанию или передать его как аргумент.
-        }
-        try {
-            Expr.divisionByZero1(8, 0);
-        } catch (ArithmeticException e) {
-            System.out.println("Деление на ноль");
         }
         double result = Expr.expr(intArray, d);
         System.out.println(result);
