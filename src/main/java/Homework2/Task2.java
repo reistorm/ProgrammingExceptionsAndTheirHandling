@@ -8,43 +8,38 @@ package Homework2;
 
 import java.util.Arrays;
 
-class Expr {
+class Expr1 {
 
     public static double expr(int[] intArray, int d) {
-
-        for (int i = 0; i < intArray.length; i++) {
-            double result1 = 0;
-            if (i >= 8 && d != 0) {
-                try {
-                    result1 = intArray[8] / d;
-                    System.out.println("intArray[8] / d = " + intArray[8] + " / " + d + " = " + result1);
-                } catch (ArithmeticException e) {
-                    System.out.println("It's not possible to evaluate the expression - intArray[8] / d as d = 0.\n" +
-                            "NaN");
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("Array Index Out Of Bounds Exception");
-                }
-            }
+        if (intArray.length < 9) {
+            System.out.println("It's not possible to evaluate the expression - intArray[8] / d as there is no 8th element in the given array.");
+            return Double.NaN;
+        } else if (d == 0) {
+            System.out.println("It's not possible to evaluate the expression - intArray[8] / d as d = 0.");
+            return Double.NaN;
+        } else {
+            double catchedRes1 = (double) intArray[8] / d;
+            System.out.println("intArray[8] / d = " + intArray[8] + " / " + d + " = " + catchedRes1);
+            return catchedRes1;
         }
-        return intArray[8] * 1 / d;
     }
 }
 
 // Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
 
-public class Task2 {
-    public static void main(String[] args) {
-        int[] intArray;
-        int d;
+    public class Task2 {
+        public static void main(String[] args) {
+            int[] intArray;
+            int d;
 
-        if (args.length == 0) {
-            intArray = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 15, 9};
-            d = 0; // По умолчанию используем 0, если аргумент не передан
-        } else {
-            intArray = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
-            d = Integer.parseInt(args[1]); // Можно использовать значение по умолчанию или передать его как аргумент.
+            if (args.length == 0) {
+                intArray = new int[]{0, 1, 2, 3, 4, 5, 6, 15, 18, 19};
+                d = 0; // По умолчанию используем 0, если аргумент не передан
+            } else {
+                intArray = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
+                d = Integer.parseInt(args[1]); // Можно использовать значение по умолчанию или передать его как аргумент.
+            }
+            double result = Expr1.expr(intArray, d);
+            System.out.println(result);
         }
-        double result = Expr.expr(intArray, d);
-        System.out.println(result);
     }
-}

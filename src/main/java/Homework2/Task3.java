@@ -12,32 +12,16 @@ package Homework2;
 class Expre {
 
     public static double expre(int a, int b) {
-        // Введите свое решение ниже
-//        int result = 0;
-//        if (b != 0) {
-//            try {
-//                result = a / b;
-//                printSum(a, b);
-//            } catch (ArithmeticException e) {
-//                System.out.println("Division by zero");
-//            }
-//        }
-//        return result;
-        int result = 0;
-        try {
-            result = a / b;
-            System.out.println(result);
-        } catch (ArithmeticException e) {
-            System.out.println("Division by zero");
+        double result = 0.0; // Initialize the result
+        if (b != 0) {
+            result = (double) a / b; // Perform the division and store the result
         }
-        return printSum(a,b);
+        printSum(a, b);
+        return result; // Return the result
     }
 
-    public static double printSum(int a, int b) {
-        // Введите свое решение ниже
-        int sum = a + b;
-        System.out.println(sum);
-        return sum;
+    public static void printSum(int a, int b) {
+        System.out.println(a + b);
     }
 }
 
