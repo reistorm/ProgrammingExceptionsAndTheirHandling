@@ -16,7 +16,7 @@ public class Cat extends Animal{
             throw new AnimalNameException("Некорректное имя котика: ", name);
         return new Animal(name);
     }
-    public void run(int distance) throws AnimalRunException{
+    public void run(int dist0ance) throws AnimalRunException{
         if (distance < 50){
             //TODO:  Котик бегает
         }
